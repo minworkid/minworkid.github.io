@@ -42835,10 +42835,7 @@
 	  const camera = setCamera(width / height);
 	  const renderer = setRenderer(width, height);
 	  setControls(camera, renderer, opts.trackball);
-	  setLights(scene);
-	  if (opts.grid) {
-	    showGrid(scene);
-	  }
+	  
 	  render(element, renderer, scene, camera, opts.trackball);
 	  window.addEventListener('resize', onWindowResize(element, camera, renderer), false);
 	  scene.camera = camera;
