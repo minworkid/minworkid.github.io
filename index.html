@@ -113,7 +113,7 @@
   var loadingElement = document.getElementById('loading')
   var viewerElement = document.getElementById('viewer')
   var scene = modelPlayer.prepareScene(viewerElement, {
-    grid: true,
+    grid: false,
     background: 'rgb(80, 80, 80)'
   })
 
@@ -151,6 +151,7 @@
     modelPlayer.clearScene(scene)
     modelPlayer.resetCamera(scene)
     modelPlayer.hideGrid(scene)
+    modelPlayer.setLights(scene)
     nameElement.innerHTML = 'Sample 02'
     modelPlayer.loadGlb(
       scene, 
