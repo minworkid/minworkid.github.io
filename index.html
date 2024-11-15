@@ -100,28 +100,9 @@
       </button>
     </div>
 
-    <div style="margin: 2em auto; max-width: 900px">
-      <pre><code class="language-javascript">
-var modelPlayer = this.Js3dModelViewer
-var viewerElement = document.getElementById('viewer')
-var opts = {
-  grid: true,
-  background: 'rgb(80, 80, 80)'
-}
-var scene = modelPlayer.prepareScene(viewerElement, opts)
-modelPlayer.loadObject(scene, './assets/sample.obj')
-// or modelPlayer.loadGlb(scene, './assets/avocado.glb')
-
-var fullScreenButton = document.getElementById('fullscreen-button')
-fullScreenButton.addEventListener('click', function () {
-  modelPlayer.goFullScreen(viewerElement)
-})</code></pre>
-    </div>
 
     <footer class="center footer">
-      <a href="https://github.com/cgwire/js-3d-model-viewer">
-        See sources on Github
-      </a>
+      
     </footer>
   </div>
 
@@ -144,7 +125,7 @@ fullScreenButton.addEventListener('click', function () {
     loadingElement.innerHTML = progress + '%'
   })
 
-  modelPlayer.loadObject(scene, './assets/sample.obj', null, function () {
+  modelPlayer.loadGlb(scene, './asset/1.glb', null, function () {
     nameElement.innerHTML = 'Sample 01'
     loadingElement.innerHTML = ''
   })
@@ -158,9 +139,9 @@ fullScreenButton.addEventListener('click', function () {
   sample1Button.addEventListener('click', function () {
     modelPlayer.clearScene(scene)
     modelPlayer.resetCamera(scene)
-    modelPlayer.showGrid(scene)
+    modelPlayer.hideGrid(scene)
     nameElement.innerHTML = 'Sample 01'
-    modelPlayer.loadObject(scene, './assets/sample.obj', null, function () {
+    modelPlayer.loadGlb(scene, './asset/1.glb', null, function () {
       loadingElement.innerHTML = ''
     })
   })
@@ -169,12 +150,11 @@ fullScreenButton.addEventListener('click', function () {
   sample2Button.addEventListener('click', function () {
     modelPlayer.clearScene(scene)
     modelPlayer.resetCamera(scene)
-    modelPlayer.showGrid(scene)
+    modelPlayer.hideGrid(scene)
     nameElement.innerHTML = 'Sample 02'
-    modelPlayer.loadObject(
+    modelPlayer.loadGlb(
       scene, 
-      './assets/sample_02.obj', 
-      './assets/sample_02.mtl',
+      './asset/2.glb',
       function () {
         loadingElement.innerHTML = ''
     })
@@ -184,12 +164,11 @@ fullScreenButton.addEventListener('click', function () {
   sample3Button.addEventListener('click', function () {
     modelPlayer.clearScene(scene)
     modelPlayer.resetCamera(scene)
-    modelPlayer.showGrid(scene)
+    modelPlayer.hideGrid(scene)
     nameElement.innerHTML = 'Sample 03'
-    modelPlayer.loadObject(
+    modelPlayer.loadGlb(
       scene, 
-      './assets/sample_03.obj',
-      './assets/sample_03.mtl',
+      './asset/3.glb',
       function () {
         nameElement.innerHTML = 'Sample 03'
         loadingElement.innerHTML = ''
@@ -200,11 +179,11 @@ fullScreenButton.addEventListener('click', function () {
   sample4Button.addEventListener('click', function () {
     modelPlayer.clearScene(scene)
     modelPlayer.resetCamera(scene)
-    modelPlayer.showGrid(scene)
+    modelPlayer.hideGrid(scene)
     nameElement.innerHTML = 'Sample 04'
     modelPlayer.loadGlb(
       scene, 
-      './asset/avocado.glb',
+      './asset/4.glb',
       function () {
         nameElement.innerHTML = 'Sample 04'
         loadingElement.innerHTML = ''
@@ -231,7 +210,7 @@ fullScreenButton.addEventListener('click', function () {
   var gridCheckbox = document.querySelector('#grid-button');
   gridCheckbox.onchange = function() {
   if(gridCheckbox.checked) {
-    modelPlayer.showGrid(scene)
+    modelPlayer.hideGrid(scene)
   } else {
     modelPlayer.hideGrid(scene)
   }
