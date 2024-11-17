@@ -1,220 +1,148 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>BOX</title>
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-        background: white;
-        font-family: Geneva, sans-serif;
-      }
-      p {
-        margin: 0;
-        padding: 0;
-      }
-      a {
-        color: #3CB371;
-      }
-      #viewer {
-        width: 100%; 
-        height: 400px; 
-        margin: auto; 
-        background: #000000;
-        margin-top: 2em;
-      }
-      .button {
-        border-radius: 0.2em;
-        background-color: white;
-        color: #3CB371;
-        border: 3px solid #3CB371;
-        font-weight: bold;
-        padding: 1em;
-        cursor: pointer;
-      }
-      .center {
-        text-align: center;
-        margin-top: 2em;
-      }
-      canvas {
-        display: block;
-      }
-      pre {
-        padding: 1em;
-        max-width: 900px;
-        margin: auto;
-        margin-top: 4em;
-        font-size: 1.2em;
-      }
-      .footer {
-        padding-bottom: 2em;
-      }
-      .mr2 {
-        margin-right: 2em;
-      }
-	</style>
-    <link 
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism.min.css"
-    />
-  </head>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BOX</title>
+<script type="module"
+            src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"></script>
+<style>
+body {font-family: Arial;}
 
-  <body>
-  <div class="content">
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
 
-    <header class="center"><h1>BOX</h1></header>
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
 
-    <div id="viewer" style="">
-    </div>
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
 
-    <div class="center">
-      <span id="name">Sample 01</span>
-      <span id="loading"></span>
-    </div>
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
 
-    <div class="center">
-      <button class="button" id="sample-1-button">
-        Sample 1
-      </button>
-      <button class="button" id="sample-2-button">
-        Sample 2
-      </button>
-      <button class="button" id="sample-3-button">
-        Sample 3
-      </button>
-      <button class="button" id="sample-4-button">
-        Sample 4
-      </button>
-      <!--button class="button" id="sample-5-button">
-        Sample 5 (.usdz)
-      </button-->
-    </div>
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+</style>
+</head>
+<body>
 
-    <div class="center">
-      <input class="mr2" id="grid-button" type="checkbox" checked>
-        Grid
-      </input>
-      <button class="button" id="fullscreen-button">
-        Go Full Screen
-      </button>
-    </div>
+<h2>BOX</h2>
 
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'Sample1')">Sample1</button>
+  <button class="tablinks" onclick="openCity(event, 'Sample2')">Sample2</button>
+  <button class="tablinks" onclick="openCity(event, 'Sample3')">Sample3</button>
+  <button class="tablinks" onclick="openCity(event, 'Sample4')">Sample4</button>
+</div>
 
-    <footer class="center footer">
-      
-    </footer>
-  </div>
+<div id="Sample1" class="tabcontent">
+  <h3>Sample1</h3>
+  <div style="width:100%; margin:0 auto; height:80vh;">
+            <model-viewer
+                alt="desk_chair"
+                src="https://minworkid.github.io/asset/1.glb"
+                style="width:100%;height:100%;"
+                background-color="#ECECEC"
+                shadow-intensity="0.9"
+                exposure="0.7"
+                camera-controls
+                autoplay
+                ar-modes="scene-viewer webxr quick-look"
+                auto-rotate ar>
+            </model-viewer>
+        </div>
+</div>
 
-  <script src="./dist/js-3d-model-viewer.js"></script>
-  <script>
-  var modelPlayer = this.Js3dModelViewer
-  var nameElement = document.getElementById('name')
-  var loadingElement = document.getElementById('loading')
-  var viewerElement = document.getElementById('viewer')
-  var scene = modelPlayer.prepareScene(viewerElement, {
-    grid: false,
-    background: 'rgb(80, 80, 80)'
-  })
+<div id="Sample2" class="tabcontent">
+  <h3>Sample2</h3>
+  <div style="width:100%; margin:0 auto; height:80vh;">
+            <model-viewer
+                alt="desk_chair"
+                src="https://minworkid.github.io/asset/2.glb"
+                style="width:100%;height:100%;"
+                background-color="#ECECEC"
+                shadow-intensity="0.9"
+                exposure="0.7"
+                camera-controls
+                autoplay
+                ar-modes="scene-viewer webxr quick-look"
+                auto-rotate ar>
+            </model-viewer>
+        </div>
+</div>
 
-  viewerElement.addEventListener('loading', function (event) {
-    if (event.detail.loaded === 0) {
-      nameElement.innerHTML = 'Loading...'
-    } 
-    var progress = Math.floor(100 * event.detail.loaded / event.detail.total)
-    loadingElement.innerHTML = progress + '%'
-  })
+<div id="Sample3" class="tabcontent">
+  <h3>Sample3</h3>
+  <div style="width:100%; margin:0 auto; height:80vh;">
+            <model-viewer
+                alt="desk_chair"
+                src="https://minworkid.github.io/asset/3.glb"
+                style="width:100%;height:100%;"
+                background-color="#ECECEC"
+                shadow-intensity="0.9"
+                exposure="0.7"
+                camera-controls
+                autoplay
+                ar-modes="scene-viewer webxr quick-look"
+                auto-rotate ar>
+            </model-viewer>
+        </div>
+</div>
+<div id="Sample4" class="tabcontent">
+  <h3>Sample4</h3>
+  <div style="width:100%; margin:0 auto; height:80vh;">
+            <model-viewer
+                alt="desk_chair"
+                src="https://minworkid.github.io/asset/4.glb"
+                style="width:100%;height:100%;"
+                background-color="#ECECEC"
+                shadow-intensity="0.9"
+                exposure="0.7"
+                camera-controls
+                autoplay
+                ar-modes="scene-viewer webxr quick-look"
+                auto-rotate ar>
+            </model-viewer>
+        </div>
+</div>
 
-  modelPlayer.loadGlb(scene, './asset/1.glb', null, function () {
-    nameElement.innerHTML = 'Sample 01'
-    loadingElement.innerHTML = ''
-  })
-
-  var fullScreenButton = document.getElementById('fullscreen-button')
-  fullScreenButton.addEventListener('click', function () {
-    modelPlayer.goFullScreen(viewerElement)
-  })
-
-  var sample1Button = document.getElementById('sample-1-button')
-  sample1Button.addEventListener('click', function () {
-    nameElement.innerHTML = 'Sample 01'
-    modelPlayer.loadGlb(scene, './asset/1.glb', null, function () {
-      loadingElement.innerHTML = ''
-    })
-  })
-
-  var sample2Button = document.getElementById('sample-2-button')
-  sample2Button.addEventListener('click', function () {
-    modelPlayer.clearScene(scene)
-    modelPlayer.resetCamera(scene)
-    modelPlayer.hideGrid(scene)
-    nameElement.innerHTML = 'Sample 02'
-    modelPlayer.loadGlb(
-      scene, 
-      './asset/2.glb',
-      function () {
-        loadingElement.innerHTML = ''
-    })
-  })
-
-  var sample3Button = document.getElementById('sample-3-button')
-  sample3Button.addEventListener('click', function () {
-    modelPlayer.clearScene(scene)
-    modelPlayer.resetCamera(scene)
-    modelPlayer.hideGrid(scene)
-    nameElement.innerHTML = 'Sample 03'
-    modelPlayer.loadGlb(
-      scene, 
-      './asset/3.glb',
-      function () {
-        nameElement.innerHTML = 'Sample 03'
-        loadingElement.innerHTML = ''
-    })
-  })
-
-  var sample4Button = document.getElementById('sample-4-button')
-  sample4Button.addEventListener('click', function () {
-    modelPlayer.clearScene(scene)
-    modelPlayer.resetCamera(scene)
-    modelPlayer.hideGrid(scene)
-    nameElement.innerHTML = 'Sample 04'
-    modelPlayer.loadGlb(
-      scene, 
-      './asset/4.glb',
-      function () {
-        nameElement.innerHTML = 'Sample 04'
-        loadingElement.innerHTML = ''
-    })
-  })
-
-  /*
-  var sample5Button = document.getElementById('sample-5-button')
-  sample5Button.addEventListener('click', function () {
-    modelPlayer.clearScene(scene)
-    modelPlayer.resetCamera(scene)
-    modelPlayer.showGrid(scene)
-    nameElement.innerHTML = 'Sample 05'
-    modelPlayer.loadUsdz(
-      scene, 
-      '/assets/sneakers.usdz',
-      function () {
-        nameElement.innerHTML = 'Sample 05'
-        loadingElement.innerHTML = ''
-    })
-  })
-  */
-
-  var gridCheckbox = document.querySelector('#grid-button');
-  gridCheckbox.onchange = function() {
-  if(gridCheckbox.checked) {
-    modelPlayer.hideGrid(scene)
-  } else {
-    modelPlayer.hideGrid(scene)
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
   }
-};
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-javascript.js"></script>
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+   
 </body>
-</html>
+</html> 
